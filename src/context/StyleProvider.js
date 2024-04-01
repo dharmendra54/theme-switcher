@@ -13,21 +13,34 @@ const darkTheme={
     backgroundColor:"black",
     border:"1px solid green"
 }
-const styleProvider=()=>{
+const StyleProvider=(props)=>{
       const[theme,setTheme]=useState(lightTheme)
     return(
-       
+        <PackageContext.Provider value={
+          {
+            theme:theme,
+            setTheme:setTheme,
+            lightMode:()=>setTheme(lightTheme),
+            darkMode:()=>setTheme(darkTheme)
+
+          }}>
+              {props.children}
+
+
+
+          </PackageContext.Provider>
     )
+
 }
 
-export default styleProvider;
+export default StyleProvider;
 
 
 
 
 
 
-
+//all the components are children of styleProvider.
 
 
 
